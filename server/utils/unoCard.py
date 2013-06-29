@@ -7,18 +7,20 @@
 # Copyright:   (c) parkman 2013
 # Licence:     <MIT>
 #-------------------------------------------------------------------------------
-import web
 import random
 
-from unoController import UnoController
-from utils.unoCard import StandardCard
-from utils.functions import *
 
-url = (
-    '/uno/card/(.+)', 'UnoController'
-)
+class StandardCard(object):
+    """
+    Standard card, only for the number card
+    """
+    def __init__(self, color, number):
+        self.color = color
+        self.number = number
 
-app = web.application(urls, globals())
+    def __str__(self):
+        return self.color + "-" + str(self.number)
+
 
 def main():
     pass

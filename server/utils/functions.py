@@ -7,18 +7,9 @@
 # Copyright:   (c) parkman 2013
 # Licence:     <MIT>
 #-------------------------------------------------------------------------------
-import random
+from collections import deque
+from utils.unCard import StandardCard
 
-class StandardCard(object):
-    """
-    Standard card, only for the number card
-    """
-    def __init__(self, color, number):
-        self.color = color
-        self.number = number
-
-    def __str__(self):
-        return self.color + "-" + str(self.number)
 
 def initize_cards():
     """
@@ -37,12 +28,15 @@ def initize_cards():
                 cards.append(card)
     return cards
 
-def shuffle_cards(cards):
+def shuffle_cards():
+    cards = initize_cards()
+    _cards = random.sample(cards, len(cards))
+    return deque(_cards)
+
+cards = shuffle_cards()
+
+def re_shuffle_cards(cards):
     return random.sample(cards, len(cards))
-
-
-
-
 
 def main():
     pass
